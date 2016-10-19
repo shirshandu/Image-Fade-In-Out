@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<title>index</title>
+<script type="text/javascript">
+var imagesALL=null;
+var imagesENVELOPE=null;
+var imagesSMALL=null;
+var imagesMEDIUM=null;
+var imagesLARGE=null;
+var imagesOTHER=null;
+var currentTab=null;
+function log(message) {
+	var log=document.getElementById("log");
+	log.innerHTML+="<h3>"+message+"</h3>";
+}
+
+$(document).ready(function(){
+	imagesALL=new Array();
+	for(var i=1;i<=12;i++)
+		imagesALL.push("#img"+i);
+	imagesENVELOPE=["#img7","#img8"];
+	imagesSMALL=["#img2","#img3","#img4"];
+	imagesMEDIUM=["#img9","#img10","#img11","#img12"];
+	imagesLARGE=["#img1","#img6"];
+	imagesOTHER=["#img5"];
+	init();
+	});
+function init() {
+	currentTab="#ALL";
+	$(currentTab).addClass("active");
+
+	$("#ALL").click(function() {
+		setTab("#ALL");
+		for(var i=0;i<imagesALL.length;i++)
+			$(imagesALL[i]).fadeTo(1000,1);
+	});
+	$("#ENVELOPE").click(function() {
+		setTab("#ENVELOPE");
+		for(var i=0;i<imagesALL.length;i++) {
+			var found=false;
+			for(var j=0;j<imagesENVELOPE.length;j++)
+				if(imagesALL[i]==imagesENVELOPE[j]) {
+					$(imagesENVELOPE[j]).fadeTo(1000,1);
+					found=true;
+				}
+			if(found==false)
+				$(imagesALL[i]).fadeTo(1000,0.3);
+		}
+		});
+	$("#SMALL").click(function() {
+		setTab("#SMALL");
+		for(var i=0;i<imagesALL.length;i++) {
+			var found=false;
+			for(var j=0;j<imagesSMALL.length;j++)
+				if(imagesALL[i]==imagesSMALL[j]) {
+					$(imagesSMALL[j]).fadeTo(1000,1);
+					found=true;
+				}
+			if(found==false)
+				$(imagesALL[i]).fadeTo(1000,0.3);
+		}
+	});
+	$("#MEDIUM").click(function() {
+		setTab("#MEDIUM");
+		for(var i=0;i<imagesALL.length;i++) {
+			var found=false;
+			for(var j=0;j<imagesMEDIUM.length;j++)
+				if(imagesALL[i]==imagesMEDIUM[j]) {
+					$(imagesMEDIUM[j]).fadeTo(1000,1);
+					found=true;
+				}
+			if(found==false)
+				$(imagesALL[i]).fadeTo(1000,0.3);
+		}
+	});
+	$("#LARGE").click(function() {
+		setTab("#LARGE");
+		for(var i=0;i<imagesALL.length;i++) {
+			var found=false;
+			for(var j=0;j<imagesLARGE.length;j++)
+				if(imagesALL[i]==imagesLARGE[j]) {
+					$(imagesLARGE[j]).fadeTo(1000,1);
+					found=true;
+				}
+			if(found==false)
+				$(imagesALL[i]).fadeTo(1000,0.3);
+		}
+	});
+	$("#OTHER").click(function() {
+		setTab("#OTHER");
+		for(var i=0;i<imagesALL.length;i++) {
+			var found=false;
+			for(var j=0;j<imagesOTHER.length;j++)
+				if(imagesALL[i]==imagesOTHER[j]) {
+					$(imagesOTHER[j]).fadeTo(1000,1);
+					found=true;
+				}
+			if(found==false)
+				$(imagesALL[i]).fadeTo(1000,0.3);
+		}
+	});
+}
+function setTab(tab) {
+	$(currentTab).removeClass("active");
+	currentTab=tab;
+	$(currentTab).addClass("active");
+}
+</script>
+<style type="text/css">
+body * {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	margin: 0 auto;
+}
+#imageContainer, div.tabs {
+	margin-top: 20px;
+ display: block;
+ text-align: center;
+}
+#imageContainer img {
+	width: 150px;
+	height: 150px;
+	filter: brightness(50%);
+}
+#imageContainer img:hover {
+	filter: brightness(100%);
+}
+div.tabs {
+	text-align: center;
+}
+div.tabs ul {
+	list-style-type: none;
+}
+div.tabs ul li {
+	cursor: pointer;
+ display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	margin-right: 70px;
+	padding-bottom: 10px;
+}
+div.tabs ul li:hover {
+	padding-bottom: 5px;
+	border-bottom: 5px solid yellowgreen;
+}
+div.tabs ul li.active {
+	padding-bottom: 5px;
+	border-bottom: 5px solid blue;
+}
+</style>
+</head>
+<body>
+<div class="tabs" id="tabs">
+	<ul>
+		<li id="ALL">ALL</li>
+		<li id="ENVELOPE">ENVELOPE</li>
+		<li id="SMALL">SMALL</li>
+		<li id="MEDIUM">MEDIUM</li>
+		<li id="LARGE">LARGE</li>
+		<li id="OTHER">OTHER</li>
+	</ul>
+</div>
+<div class="imageContainer" id="imageContainer">
+<img id="img1" src="images/img1.jpg" />
+<img id="img2" src="images/img2.jpg" />
+<img id="img3" src="images/img3.jpg" />
+<img id="img4" src="images/img4.jpg" />
+<img id="img5" src="images/img5.jpg" />
+<img id="img6" src="images/img6.jpg" />
+<img id="img7" src="images/img7.jpg" />
+<img id="img8" src="images/img8.jpg" />
+<img id="img9" src="images/img9.jpg" />
+<img id="img10" src="images/img10.jpg" />
+<img id="img11" src="images/img11.jpg" />
+<img id="img12" src="images/img12.jpg" />
+</div>
+<div id="log"></div>
+</body>
+</html>
